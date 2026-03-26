@@ -1309,7 +1309,7 @@
       <li><a href="#method">How It Works</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
-    <a href="#" class="btn-primary" data-book>Book a Session</a>
+    <a href="#" class="btn-primary" onclick="openBookingModal();return false;">Book a Session</a>
   </div>
 </nav>
 
@@ -1348,7 +1348,7 @@
     <h1 class="hero-anim" style="--ha:0.6s">From Land to<br /><em>Cash Flow.</em></h1>
     <p class="hero-sub hero-anim" style="--ha:0.8s">Keyspace guides investors through a complete, done-with-you process — sourcing investment-grade land, structuring finance, building high-yield properties, and managing them for long-term performance.</p>
     <div class="hero-cta hero-anim" style="--ha:1.0s">
-      <a id="heroCtaBtn" href="#" class="btn-primary" data-book>Download FREE Blueprint</a>
+      <a id="heroCtaBtn" href="#" class="btn-primary" onclick="openBookingModal();return false;">Download FREE Blueprint</a>
       <a href="#method" class="btn-ghost">
         See How It Works
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1529,7 +1529,7 @@
 
     <div class="for-cta reveal">
       <p>Not sure which category you fall into? That's exactly what the strategy session is for.</p>
-      <a href="#" class="btn-orange" data-book>Download FREE Blueprint</a>
+      <a href="#" class="btn-orange" onclick="openBookingModal();return false;">Download FREE Blueprint</a>
     </div>
 
   </div>
@@ -1915,7 +1915,7 @@
     <h2>Stop leaving yield<br /><em>on the table.</em></h2>
     <p>Book a free, no-obligation strategy session with the Keyspace team. We'll review your current position, explain what's possible, and map out a clear path to a high-cash-flow property asset.</p>
     <div class="cta-strip-actions">
-      <a href="#" class="btn-orange" data-book>Download FREE Blueprint</a>
+      <a href="#" class="btn-orange" onclick="openBookingModal();return false;">Download FREE Blueprint</a>
     </div>
   </div>
 </section>
@@ -1952,7 +1952,7 @@
       <div class="footer-col">
         <h5>Get Started</h5>
         <ul>
-          <li><a href="#" data-book>Download FREE Blueprint</a></li>
+          <li><a href="#" onclick="openBookingModal();return false;">Download FREE Blueprint</a></li>
           <li><a href="#">info@keyspaceproperty.com.au</a></li>
           <li><a href="#">Australia</a></li>
         </ul>
@@ -2149,34 +2149,21 @@
   document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
   /* ── BOOKING MODAL ── */
-  (function() {
-    const overlay = document.getElementById('bookingModal');
-    const closeBtn = document.getElementById('modalClose');
-
-    function openModal() {
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal() {
-      overlay.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    // Wire every "Book a Session / Strategy Session" button
-    document.querySelectorAll('[data-book]').forEach((el) => {
-      el.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
-    });
-
-    // Close on X button or clicking outside the box
-    closeBtn.addEventListener('click', closeModal);
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) closeModal();
-    });
-    // Close on Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-    });
-  })();
+  function openBookingModal() {
+    document.getElementById('bookingModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeBookingModal() {
+    document.getElementById('bookingModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modalClose').addEventListener('click', closeBookingModal);
+  document.getElementById('bookingModal').addEventListener('click', function(e) {
+    if (e.target === this) closeBookingModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeBookingModal();
+  });
 </script>
 
 <script src="https://app.keyspaceproperty.com.au/js/form_embed.js"></script>
