@@ -1,0 +1,2184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keyspace Property Group – End-to-End Property Investment</title>
+  <link rel="icon" type="image/png" href="brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-light: #f5f5f5;
+      --primary: #1a1a1a;
+      --primary-dark: #000000;
+      --accent: #1a1a1a;
+      --link: #1a1a1a;
+      --dark: #1a1a1a;
+      --dark-card: #252525;
+      --text: #555555;
+      --muted: #999999;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    ::selection { color: #fff; background: #4d4d4d; }
+    body {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "calt", "clig", "kern", "liga";
+    }
+    /* Hero h1 keeps Fraunces as brand signature; all other headings use Urbanist */
+    .hero h1 { font-family: 'Fraunces', Georgia, serif; }
+    h2, h3 {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #1a1a1a;
+    }
+    h4, h5, h6 { font-family: 'Urbanist', sans-serif; font-weight: 500; color: #1a1a1a; }
+    p, ul, li, ol, div, table, button, input, select, textarea, a {
+      font-family: 'Urbanist', sans-serif;
+      font-feature-settings: "calt", "clig", "kern", "liga";
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      transition: opacity 0.2s ease;
+    }
+    .nav-links a:hover { opacity: 1; }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      font-family: 'Urbanist', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 12px 26px;
+      border-radius: 0;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease, opacity 0.2s ease;
+      display: inline-block;
+    }
+    .btn-primary:hover { opacity: 0.75; }
+    .btn-primary:active { opacity: 1; }
+    /* ── BOOKING MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .modal-box {
+      background: #fff;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 560px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      transform: translateY(16px);
+      transition: transform 0.25s cubic-bezier(0.25,0.4,0.25,1);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+    }
+    .modal-overlay.open .modal-box {
+      transform: translateY(0);
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 28px 20px;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+    .modal-header h3 {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: #1a1a1a;
+      margin: 0;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: #999;
+      line-height: 1;
+      transition: color 0.15s ease;
+    }
+    .modal-close:hover { color: #1a1a1a; }
+    .modal-body {
+      padding: 28px;
+      min-height: 200px;
+    }
+
+    .btn-orange {
+      background: var(--primary);
+      color: #fff;
+      font-family: 'Urbanist', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border-radius: 0;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+      display: inline-block;
+    }
+    .btn-orange:hover { opacity: 0.75; }
+    .btn-orange:active { transform: translateY(0); }
+
+    /* ── HERO ── */
+    .hero {
+      background: #fff;
+      min-height: calc(100vh - 68px);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Blobs handle ambient glow — ::before not needed */
+    .hero::before { display: none; }
+    /* Top + bottom fade-out vignette */
+    .hero::after { display: none; }
+    .hero-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* ── INFINITE GRID ── */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .hero-grid-base {
+      position: absolute;
+      inset: 0;
+      opacity: 0.07;
+      color: #000;
+    }
+    .hero-grid-reveal {
+      position: absolute;
+      inset: 0;
+      opacity: 0.35;
+      color: #000;
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+    .hero-grid-svg { width: 100%; height: 100%; display: block; }
+    /* Colour blobs — removed */
+    .hero-blob { display: none; }
+    .hero-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 80px 24px 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+    /* Staggered fade-up for hero content */
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-anim {
+      opacity: 0;
+      animation: heroFadeUp 1s cubic-bezier(0.25, 0.4, 0.25, 1) var(--ha, 0.5s) forwards;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-tag span { width: 20px; height: 1px; background: var(--muted); display: inline-block; }
+    .hero h1 {
+      font-size: clamp(38px, 5vw, 62px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: #1a1a1a;
+    }
+    .hero-sub {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 440px;
+      font-weight: 300;
+      margin: 0 auto 36px;
+    }
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    /* Image card frame — inspired by dynamic-hero */
+    .hero-img-frame {
+      width: 100%;
+      max-width: 620px;
+      margin: 52px auto 0;
+      background: rgba(0,0,0,0.07);
+      border-radius: 28px;
+      padding: 4px;
+    }
+    .hero-img-inner {
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      height: 360px;
+    }
+    .hero-img-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      will-change: transform;
+    }
+    .btn-ghost {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+    }
+    .btn-ghost:hover { color: #1a1a1a; }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      width: 100%;
+    }
+    .stat-item { display: flex; flex-direction: column; gap: 2px; }
+    .stat-num {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: #1a1a1a;
+      line-height: 1;
+    }
+    .stat-label { font-size: 11px; color: var(--muted); font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; }
+    .hero-visual { position: relative; }
+    .hero-img-wrap {
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.04),
+        0 12px 40px rgba(0,0,0,0.12),
+        0 32px 80px rgba(0,0,0,0.08);
+      position: relative;
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hero-card {
+      width: 100%;
+      max-width: 620px;
+      margin: 10px auto 0;
+      background: var(--bg-light);
+      border-radius: 12px;
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .hero-card-label { font-size: 12px; color: var(--muted); margin-bottom: 2px; }
+    .hero-card-value { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--text); }
+    .hero-card-badge {
+      background: rgba(0,0,0,0.05);
+      color: #555555;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 4px;
+    }
+    .hero-dot {
+      position: absolute;
+      top: 20px;
+      right: -16px;
+      width: 80px;
+      height: 80px;
+      background: var(--primary);
+      border-radius: 50%;
+      opacity: 0.15;
+      filter: blur(20px);
+    }
+
+    /* ── FEATURES / SERVICES ── */
+    .features-section {
+      padding: 96px 40px;
+      background: #fff;
+    }
+    .features-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .features-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .features-header h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .features-header p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    /* Fluid grid: auto-fit fills columns as space allows */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--bg-light);
+      border-radius: 4px;
+      padding: 32px 28px;
+      text-align: center;
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+      cursor: default;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.07);
+    }
+    .feature-card:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+
+    /* CardDecorator */
+    .card-decorator {
+      position: relative;
+      width: 144px;
+      height: 144px;
+      margin: 0 auto 8px;
+      -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, black 70%, transparent 100%);
+      mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, black 70%, transparent 100%);
+    }
+    .card-decorator-grid {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right,  rgba(0,0,0,1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,0,0,1) 1px, transparent 1px);
+      background-size: 24px 24px;
+      opacity: 0.09;
+    }
+    .card-decorator-icon {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-top:  1px solid rgba(0,0,0,0.10);
+      border-left: 1px solid rgba(0,0,0,0.10);
+      transition: background 0.2s ease;
+    }
+    .feature-card:hover .card-decorator-icon {
+      background: var(--bg-light);
+    }
+    .card-decorator-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--text);
+      fill: none;
+      stroke-width: 1.5;
+    }
+    .feature-card h3 {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+      margin-top: 20px;
+    }
+    .feature-card p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    /* ── OUR METHOD ── */
+    .method-section {
+      padding: 100px 40px;
+      background: #fff;
+    }
+    .method-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .section-heading {
+      font-family: 'Urbanist', sans-serif;
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 500px;
+      margin-bottom: 60px;
+    }
+    .method-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+    .step {
+      position: relative;
+      padding-top: 40px;
+    }
+    .step::before {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: rgba(0,0,0,0.08);
+    }
+    .step-num {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 26px;
+      height: 26px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .step h4 {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .step p { font-size: 14px; line-height: 1.65; color: var(--muted); }
+
+    /* ── CASE STUDIES ── */
+    .cases-section {
+      padding: 80px 40px 100px;
+      background: var(--bg-light);
+    }
+    .cases-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .cases-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .case-card {
+      border-radius: 4px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.04),
+        0 8px 32px rgba(0,0,0,0.07);
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+    .case-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+    }
+    .case-card:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+    .case-img {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+    .case-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .case-card:hover .case-img img { transform: scale(1.04); }
+    .case-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.5) 100%);
+    }
+    .case-img-overlay-color {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.08);
+      mix-blend-mode: multiply;
+    }
+    .case-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(6px);
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      padding: 4px 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .case-body { padding: 24px; }
+    .case-body h4 {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .case-body p { font-size: 13px; line-height: 1.6; color: var(--muted); }
+    .case-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(0,0,0,0.07);
+    }
+    .case-meta span { font-size: 12px; font-weight: 500; color: var(--muted); }
+    .case-meta-val { font-size: 14px; font-weight: 700; color: var(--text); }
+
+    /* ── ABOUT ── */
+    .about-section {
+      padding: 100px 40px;
+      background: #fff;
+    }
+    .about-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-img-wrap {
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 12px 60px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .about-img-wrap img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+    .about-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.4) 100%);
+    }
+    .about-badge {
+      position: absolute;
+      bottom: 28px;
+      left: 28px;
+      z-index: 2;
+      background: rgba(255,255,255,0.95);
+      border-radius: 4px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .about-badge-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-badge-icon svg { width: 20px; height: 20px; fill: #fff; }
+    .about-badge-text strong { display: block; font-size: 16px; font-weight: 700; color: var(--text); }
+    .about-badge-text span { font-size: 12px; color: var(--muted); }
+    .about-content h2 {
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+    .about-content p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .about-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 24px;
+      margin-bottom: 36px;
+    }
+    .about-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .about-list li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      padding: 64px 40px 40px;
+    }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-logo {
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+    .footer-logo img {
+      height: 40px;
+      width: auto;
+      filter: invert(1) brightness(10);
+      opacity: 0.9;
+    }
+    .footer-brand p { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.45); max-width: 280px; }
+    .footer-col h5 {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-col a:hover { color: #fff; }
+    .footer-col a:focus-visible { outline: 1px solid var(--primary); border-radius: 2px; }
+    .footer-bottom {
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.3); }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section {
+      padding: 100px 40px;
+      background: var(--bg-light);
+    }
+    .testimonials-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .testimonials-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 540px;
+      margin: 0 auto 56px;
+    }
+    .testimonials-badge {
+      display: inline-block;
+      border: 1px solid rgba(0,0,0,0.15);
+      border-radius: 4px;
+      padding: 4px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+    }
+    .testimonials-header h2 {
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .testimonials-header p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .testimonials-columns {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      max-height: 740px;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+      mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+    }
+    .testimonials-col {
+      flex-shrink: 0;
+      width: 300px;
+    }
+    .testimonials-col--md { display: none; }
+    .testimonials-col--lg { display: none; }
+    @keyframes testimonialScrollUp {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+    .testimonials-track {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      animation: testimonialScrollUp linear infinite;
+      will-change: transform;
+    }
+    .testimonial-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 4px;
+      padding: 28px;
+      box-shadow:
+        0 2px 4px rgba(100,74,64,0.04),
+        0 8px 32px rgba(100,74,64,0.08);
+      width: 300px;
+      flex-shrink: 0;
+    }
+    .testimonial-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .testimonial-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .testimonial-role {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    /* ── WHO IT'S FOR ── */
+    .for-section {
+      padding: 96px 40px;
+      background: var(--bg-light);
+    }
+    .for-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .for-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .for-header h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .for-header p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .for-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .for-card {
+      background: #fff;
+      border-radius: 4px;
+      padding: 36px 32px;
+      border: 1px solid rgba(0,0,0,0.07);
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+    }
+    .for-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+    .for-card-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--bg-light);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .for-card-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--primary-dark);
+      fill: none;
+      stroke-width: 1.5;
+    }
+    .for-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .for-card-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .for-card-list li {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .for-card-list li::before {
+      content: '✓';
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .for-cta {
+      text-align: center;
+      margin-top: 48px;
+    }
+    .for-cta p {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    /* ── FAQ ── */
+    .faq-section {
+      padding: 96px 40px;
+      background: #fff;
+    }
+    .faq-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .faq-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .faq-header h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .faq-header p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item {
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .faq-item:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-align: left;
+      font-family: 'Urbanist', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      transition: color 0.2s ease;
+    }
+    .faq-q:hover { color: var(--primary-dark); }
+    .faq-q:focus-visible { outline: 2px solid var(--primary); border-radius: 2px; }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border: 1.5px solid rgba(0,0,0,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.3s ease;
+    }
+    .faq-icon svg {
+      width: 10px;
+      height: 10px;
+      stroke: var(--text);
+      fill: none;
+      stroke-width: 2;
+      transition: stroke 0.2s ease;
+    }
+    .faq-item.open .faq-icon {
+      background: var(--primary);
+      border-color: var(--primary);
+      transform: rotate(45deg);
+    }
+    .faq-item.open .faq-icon svg { stroke: #fff; }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .faq-item.open .faq-a { max-height: 300px; }
+    .faq-a-inner {
+      padding-bottom: 20px;
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      background: var(--bg-light);
+      padding: 100px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-strip::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(0,0,0,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 20% 50%, rgba(0,0,0,0.02) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cta-strip-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-strip-eyebrow {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .cta-strip h2 {
+      font-family: 'Urbanist', sans-serif;
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+    }
+    .cta-strip h2 em {
+      font-style: italic;
+      color: #1a1a1a;
+    }
+    .cta-strip p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 36px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-strip-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-outline-white {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 13px 28px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: border-color 0.2s ease, color 0.2s ease;
+      display: inline-block;
+    }
+    .btn-outline-white:hover { border-color: #fff; color: #fff; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(44px);
+      transition:
+        opacity  0.75s cubic-bezier(0.25, 0.4, 0.25, 1) calc(var(--i, 0) * 110ms),
+        transform 0.75s cubic-bezier(0.25, 0.4, 0.25, 1) calc(var(--i, 0) * 110ms);
+    }
+    .reveal-left  { transform: translateX(-48px); }
+    .reveal-right { transform: translateX(48px); }
+    .reveal-scale { transform: scale(0.94); }
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0) translateX(0) scale(1);
+    }
+
+    /* ── MOBILE HERO GALLERY ── */
+    .hero-mobile-gallery {
+      display: none;
+      width: 100%;
+      max-width: 620px;
+      margin: 12px auto 0;
+      gap: 10px;
+    }
+    .hero-mobile-gallery .hero-thumb {
+      border-radius: 16px;
+      overflow: hidden;
+      flex: 1;
+      height: 130px;
+      position: relative;
+    }
+    .hero-mobile-gallery .hero-thumb img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .hero-thumb-label {
+      position: absolute;
+      bottom: 10px; left: 12px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }
+    /* Mobile stat cards */
+    .hero-stats-mobile {
+      display: none;
+      width: 100%;
+      margin-top: 24px;
+      gap: 10px;
+    }
+    .hero-stat-card {
+      flex: 1;
+      background: var(--bg-light);
+      border-radius: 14px;
+      padding: 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (min-width: 768px) {
+      .testimonials-col--md { display: flex; flex-direction: column; }
+    }
+    @media (min-width: 1024px) {
+      .testimonials-col--lg { display: flex; flex-direction: column; }
+    }
+    @media (max-width: 1024px) {
+      .services-intro { grid-template-columns: 1fr; gap: 32px; padding: 64px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .method-steps { grid-template-columns: 1fr 1fr; }
+      .cases-grid { grid-template-columns: 1fr 1fr; }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-img-wrap { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-inner { padding: 0 20px; height: 56px; }
+      .logo img { height: 28px; }
+      .btn-primary { font-size: 10px; padding: 9px 14px; white-space: nowrap; }
+      .hero-inner { padding: 48px 20px 48px; }
+      .hero-img-frame { border-radius: 20px; }
+      .hero-img-inner { border-radius: 16px; height: 300px; }
+      .hero-stats { display: none; }
+      .hero-card { display: none; }
+      .hero-mobile-gallery { display: flex; }
+      .hero-stats-mobile { display: flex; }
+      .features-section { display: none; }
+      /* Dim grid so muted text stays legible */
+      .hero-grid-base { opacity: 0.03; }
+      .hero-grid-reveal { opacity: 0.12; }
+      /* Darken secondary text in hero for contrast */
+      .hero .hero-tag { color: #777; }
+      .hero .hero-sub { color: #666; }
+      .services-section { padding: 60px 24px; }
+      .method-steps { grid-template-columns: 1fr; }
+      .cases-grid { grid-template-columns: 1fr; }
+      .cases-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .floorplan-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <img src="brand_assets/Uppercase Keyspace Property Logo, Spacious Design.png" alt="Keyspace Property Group" style="height:32px;width:auto;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Our Process</a></li>
+      <li><a href="#method">How It Works</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#" class="btn-primary" data-book>Book a Session</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+
+  <!-- Infinite grid background -->
+  <div class="hero-grid" aria-hidden="true" id="hero-grid-wrap">
+    <div class="hero-grid-base">
+      <svg class="hero-grid-svg">
+        <defs>
+          <pattern id="grid-pat-base" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid-pat-base)"/>
+      </svg>
+    </div>
+    <div class="hero-grid-reveal" id="hero-grid-reveal">
+      <svg class="hero-grid-svg">
+        <defs>
+          <pattern id="grid-pat-reveal" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid-pat-reveal)"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Mouse-tracking arrow canvas -->
+  <canvas id="heroCanvas" class="hero-canvas"></canvas>
+
+  <div class="hero-inner">
+    <div class="hero-tag hero-anim" style="--ha:0.4s"><span></span> End-to-End Property Investment · Australia</div>
+    <h1 class="hero-anim" style="--ha:0.6s">From Land to<br /><em>Cash Flow.</em></h1>
+    <p class="hero-sub hero-anim" style="--ha:0.8s">Keyspace guides investors through a complete, done-with-you process — sourcing investment-grade land, structuring finance, building high-yield properties, and managing them for long-term performance.</p>
+    <div class="hero-cta hero-anim" style="--ha:1.0s">
+      <a id="heroCtaBtn" href="#" class="btn-primary" data-book>Book a Strategy Session</a>
+      <a href="#method" class="btn-ghost">
+        See How It Works
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Image card — visible on all screen sizes -->
+    <div class="hero-img-frame hero-anim" style="--ha:1.2s">
+      <div class="hero-img-inner">
+        <img id="heroBuildingImg"
+             src="brand_assets/19-19.jpg"
+             alt="Keyspace rooming house interior" />
+      </div>
+    </div>
+
+    <!-- Yield stat bar — sits below the image -->
+    <div class="hero-card hero-anim" style="--ha:1.35s">
+      <div>
+        <div class="hero-card-label">Gross Yield — Rooming House</div>
+        <div class="hero-card-value">12.4% p.a.</div>
+      </div>
+      <div class="hero-card-badge">↑ vs 4.2% avg</div>
+    </div>
+
+    <div class="hero-stats hero-anim" style="--ha:1.4s">
+      <div class="stat-item">
+        <span class="stat-num">4-Stage</span>
+        <span class="stat-label">End-to-End Process</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">12%+</span>
+        <span class="stat-label">Avg. Gross Yield</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Done-With-You Model</span>
+      </div>
+    </div>
+
+    <!-- Mobile-only: photo gallery row -->
+    <div class="hero-mobile-gallery hero-anim" style="--ha:1.4s">
+      <div class="hero-thumb">
+        <img src="brand_assets/28-28.jpg" alt="Rooming house kitchen" />
+        <span class="hero-thumb-label">Kitchen</span>
+      </div>
+      <div class="hero-thumb" style="background:#f0ede9;">
+        <img src="brand_assets/floorplan.png" alt="9-bedroom floor plan" style="object-fit:contain;padding:12px;" />
+        <span class="hero-thumb-label" style="color:rgba(0,0,0,0.5);text-shadow:none;">Floor Plan</span>
+      </div>
+    </div>
+
+    <!-- Mobile-only: stat cards -->
+    <div class="hero-stats-mobile hero-anim" style="--ha:1.55s">
+      <div class="hero-stat-card">
+        <span class="stat-num" style="font-size:24px;">12%+</span>
+        <span class="stat-label">Avg. Gross Yield</span>
+      </div>
+      <div class="hero-stat-card">
+        <span class="stat-num" style="font-size:24px;">4-Stage</span>
+        <span class="stat-label">End-to-End Process</span>
+      </div>
+      <div class="hero-stat-card">
+        <span class="stat-num" style="font-size:24px;">100%</span>
+        <span class="stat-label">Done-With-You</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES / FEATURES ── -->
+<section class="features-section" id="services">
+  <div class="features-inner">
+
+    <div class="features-header reveal">
+      <h2>Built for serious investors</h2>
+      <p>We cut through the noise and deliver a structured, high-yield investment process that handles everything — so you can focus on building wealth, not managing complexity.</p>
+    </div>
+
+    <div class="features-grid">
+
+      <!-- Cash-Flow First -->
+      <div class="feature-card reveal" style="--i:0" tabindex="0">
+        <div class="card-decorator" aria-hidden="true">
+          <div class="card-decorator-grid"></div>
+          <div class="card-decorator-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+            </svg>
+          </div>
+        </div>
+        <h3>Cash-Flow First</h3>
+        <p>Every strategy we design is engineered around yield and cash flow — not capital speculation. We target high-performing asset types that consistently outperform traditional investment properties.</p>
+      </div>
+
+      <!-- Full-Service Partnership -->
+      <div class="feature-card reveal" style="--i:1" tabindex="0">
+        <div class="card-decorator" aria-hidden="true">
+          <div class="card-decorator-grid"></div>
+          <div class="card-decorator-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+        </div>
+        <h3>Done-With-You Model</h3>
+        <p>From the first conversation to long-term asset management, we handle land, finance, construction, and management under one roof. You get a strategic partner — not another fragmented service provider.</p>
+      </div>
+
+      <!-- Exclusive Access -->
+      <div class="feature-card reveal" style="--i:2" tabindex="0">
+        <div class="card-decorator" aria-hidden="true">
+          <div class="card-decorator-grid"></div>
+          <div class="card-decorator-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+            </svg>
+          </div>
+        </div>
+        <h3>Access to High-Yield Opportunities</h3>
+        <p>We source investment-grade land and off-market opportunities that most investors never access — including rooming houses and cash-flow-focused developments that outperform the market.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── WHO IT'S FOR ── -->
+<section class="for-section">
+  <div class="for-inner">
+
+    <div class="for-header reveal">
+      <div class="section-eyebrow">Is This Right For You?</div>
+      <h2>We work with investors who are ready to build seriously.</h2>
+      <p>If any of these sound like you, a Keyspace strategy session is the right next step.</p>
+    </div>
+
+    <div class="for-grid">
+
+      <div class="for-card reveal" style="--i:0">
+        <div class="for-card-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3>The Time-Poor Professional</h3>
+        <ul class="for-card-list">
+          <li>You have income and borrowing capacity but no time to self-manage</li>
+          <li>You want a high-performing asset without the complexity</li>
+          <li>You need someone to handle land, finance, build, and management end-to-end</li>
+        </ul>
+      </div>
+
+      <div class="for-card reveal" style="--i:1">
+        <div class="for-card-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/></svg>
+        </div>
+        <h3>The Underperforming Investor</h3>
+        <ul class="for-card-list">
+          <li>You own one or more properties that are negatively geared or underperforming</li>
+          <li>You know there are better strategies but don't know how to access them</li>
+          <li>You want a data-backed plan to restructure or expand your portfolio</li>
+        </ul>
+      </div>
+
+      <div class="for-card reveal" style="--i:2">
+        <div class="for-card-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+        </div>
+        <h3>The Strategy-First Beginner</h3>
+        <ul class="for-card-list">
+          <li>You're new to investing and want to start with the right structure</li>
+          <li>You want to avoid common mistakes that lock up capital in low-yield assets</li>
+          <li>You're looking for a guided, process-driven approach from day one</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="for-cta reveal">
+      <p>Not sure which category you fall into? That's exactly what the strategy session is for.</p>
+      <a href="#" class="btn-orange" data-book>Book Your Free Strategy Session</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── OUR METHOD ── -->
+<section class="method-section" id="method">
+  <div class="method-inner">
+    <div class="section-eyebrow reveal">The Process</div>
+    <h2 class="section-heading reveal" style="--i:1">How It Works</h2>
+    <p class="section-sub reveal" style="--i:2">A complete, four-stage process that takes you from first conversation to a fully performing, cash-flow-positive property asset.</p>
+    <div class="method-steps">
+      <div class="step reveal" style="--i:0">
+        <div class="step-num">1</div>
+        <h4>Land Sourcing</h4>
+        <p>We identify and secure investment-grade land in high-demand Australian markets — targeting locations suited for high-yield strategies like rooming houses and cash-flow developments.</p>
+      </div>
+      <div class="step reveal" style="--i:1">
+        <div class="step-num">2</div>
+        <h4>Finance Structuring</h4>
+        <p>We work alongside your broker or introduce our trusted finance network to structure the right lending solution for your investment goals and serviceability position.</p>
+      </div>
+      <div class="step reveal" style="--i:2">
+        <div class="step-num">3</div>
+        <h4>Development &amp; Build</h4>
+        <p>Our experienced development team manages design, approvals, and construction end-to-end — delivering a completed, tenancy-ready asset on time and on budget.</p>
+      </div>
+      <div class="step reveal" style="--i:3">
+        <div class="step-num">4</div>
+        <h4>Property Management</h4>
+        <p>Once built, we manage your asset for maximum yield and occupancy — regular reporting, real-time insights, and fully hands-off operations for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FLOORPLAN SPOTLIGHT ── -->
+<section style="padding:100px 40px;background:var(--bg-light);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div class="section-eyebrow reveal">The Blueprint</div>
+    <h2 class="section-heading reveal" style="--i:1;max-width:560px;">What a Keyspace<br /><em style="font-style:italic;">Rooming House Looks Like</em></h2>
+    <p class="section-sub reveal" style="--i:2;max-width:620px;">Every Keyspace development is purpose-built for maximum yield. Here's a real floor plan from one of our rooming house projects — 9 private bedrooms, individual ensuites, generous shared living, and 3 car spaces, all on a standard suburban block.</p>
+
+    <div class="reveal" style="--i:3;margin-top:60px;background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05),0 16px 40px rgba(0,0,0,0.07);">
+      <div class="floorplan-grid" style="display:grid;grid-template-columns:1fr 1fr;min-height:480px;">
+        <!-- floor plan image -->
+        <div style="overflow:hidden;background:#f5f5f5;display:flex;align-items:center;justify-content:center;padding:32px;">
+          <img src="brand_assets/floorplan.png" alt="Keyspace rooming house floor plan" style="width:100%;height:100%;object-fit:contain;max-height:480px;display:block;" />
+        </div>
+        <!-- callout stats -->
+        <div style="padding:56px 48px;display:flex;flex-direction:column;justify-content:center;gap:36px;">
+          <div>
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary);margin-bottom:12px;">Real Development Blueprint</div>
+            <h3 style="font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:700;line-height:1.25;margin-bottom:16px;">9-Bedroom Rooming House</h3>
+            <p style="color:var(--muted);line-height:1.7;font-size:15px;">Purpose-built on a standard suburban lot. Every room is self-contained with its own ensuite — no shared bathrooms, higher rent per room, happier tenants.</p>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <div style="background:var(--bg-light);border-radius:4px;padding:20px 24px;">
+              <div style="font-family:'Fraunces',Georgia,serif;font-size:32px;font-weight:900;color:var(--primary);">9</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:4px;">Private Bedrooms</div>
+            </div>
+            <div style="background:var(--bg-light);border-radius:4px;padding:20px 24px;">
+              <div style="font-family:'Fraunces',Georgia,serif;font-size:32px;font-weight:900;color:var(--primary);">9</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:4px;">Individual Ensuites</div>
+            </div>
+            <div style="background:var(--bg-light);border-radius:4px;padding:20px 24px;">
+              <div style="font-family:'Fraunces',Georgia,serif;font-size:32px;font-weight:900;color:var(--primary);">3</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:4px;">Car Spaces</div>
+            </div>
+            <div style="background:var(--bg-light);border-radius:4px;padding:20px 24px;">
+              <div style="font-family:'Fraunces',Georgia,serif;font-size:32px;font-weight:900;color:var(--primary);">1</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:4px;">Standard Suburban Block</div>
+            </div>
+          </div>
+          <p style="font-size:13px;color:var(--muted);font-style:italic;border-left:3px solid var(--primary);padding-left:16px;line-height:1.6;">"The layout is designed to maximise individual privacy while keeping construction costs on par with a standard 4-bed home."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials-section" id="testimonials">
+  <div class="testimonials-inner">
+
+    <div class="testimonials-header reveal">
+      <div class="testimonials-badge">Investor Stories</div>
+      <h2>What our investors say</h2>
+      <p>Real outcomes from investors who've gone through the Keyspace process — from first strategy session to performing asset.</p>
+    </div>
+
+    <div class="testimonials-columns">
+
+      <!-- Column 1 (always visible) -->
+      <div class="testimonials-col">
+        <div class="testimonials-track" style="animation-duration:15s">
+          <!-- original set -->
+          <div class="testimonial-card">
+            <p class="testimonial-text">"Keyspace gave me access to a rooming house strategy I never knew existed. We're now generating over 11% gross yield — it completely changed my investment approach."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/women/1.jpg" alt="Sarah Mitchell" />
+              <div>
+                <div class="testimonial-name">Sarah Mitchell</div>
+                <div class="testimonial-role">Property Investor</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"I had three negatively geared properties and no clear direction. Keyspace built me a strategy, found the land, and managed the entire build. I now have an asset that pays for itself."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/men/2.jpg" alt="James Thornton" />
+              <div>
+                <div class="testimonial-name">James Thornton</div>
+                <div class="testimonial-role">Portfolio Investor</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"The done-with-you model is exactly what I needed as a busy professional. I didn't have time to coordinate land, finance, and construction myself. Keyspace handled everything."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/women/3.jpg" alt="Priya Nair" />
+              <div>
+                <div class="testimonial-name">Priya Nair</div>
+                <div class="testimonial-role">Finance Professional</div>
+              </div>
+            </div>
+          </div>
+          <!-- duplicate set for seamless loop -->
+          <div class="testimonial-card">
+            <p class="testimonial-text">"Keyspace gave me access to a rooming house strategy I never knew existed. We're now generating over 11% gross yield — it completely changed my investment approach."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/women/1.jpg" alt="Sarah Mitchell" />
+              <div>
+                <div class="testimonial-name">Sarah Mitchell</div>
+                <div class="testimonial-role">Property Investor</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"I had three negatively geared properties and no clear direction. Keyspace built me a strategy, found the land, and managed the entire build. I now have an asset that pays for itself."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/men/2.jpg" alt="James Thornton" />
+              <div>
+                <div class="testimonial-name">James Thornton</div>
+                <div class="testimonial-role">Portfolio Investor</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"The done-with-you model is exactly what I needed as a busy professional. I didn't have time to coordinate land, finance, and construction myself. Keyspace handled everything."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/women/3.jpg" alt="Priya Nair" />
+              <div>
+                <div class="testimonial-name">Priya Nair</div>
+                <div class="testimonial-role">Finance Professional</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2 (md+) -->
+      <div class="testimonials-col testimonials-col--md">
+        <div class="testimonials-track" style="animation-duration:19s">
+          <div class="testimonial-card">
+            <p class="testimonial-text">"I've engaged buyers agents, financial advisers, and builders separately over the years. Having all of that coordinated under one roof at Keyspace makes a significant difference to the outcome."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/men/4.jpg" alt="Michael Reeves" />
+              <div>
+                <div class="testimonial-name">Michael Reeves</div>
+                <div class="testimonial-role">Commercial Investor</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"I was sceptical about rooming houses, but the numbers speak for themselves. After 18 months my property generates over $3,200 per month in net income. Wish I'd done it sooner."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/women/5.jpg" alt="Lena Okafor" />
+              <div>
+                <div class="testimonial-name">Lena Okafor</div>
+                <div class="testimonial-role">First-Time Developer</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"The strategy session was genuinely eye-opening. For the first time someone showed me a data-backed path to cash-flow-positive assets rather than just chasing capital growth."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/women/6.jpg" alt="Rachel Huang" />
+              <div>
+                <div class="testimonial-name">Rachel Huang</div>
+                <div class="testimonial-role">Investment Strategist</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"I've engaged buyers agents, financial advisers, and builders separately over the years. Having all of that coordinated under one roof at Keyspace makes a significant difference to the outcome."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/men/4.jpg" alt="Michael Reeves" />
+              <div>
+                <div class="testimonial-name">Michael Reeves</div>
+                <div class="testimonial-role">Commercial Investor</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"I was sceptical about rooming houses, but the numbers speak for themselves. After 18 months my property generates over $3,200 per month in net income. Wish I'd done it sooner."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/women/5.jpg" alt="Lena Okafor" />
+              <div>
+                <div class="testimonial-name">Lena Okafor</div>
+                <div class="testimonial-role">First-Time Developer</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"The strategy session was genuinely eye-opening. For the first time someone showed me a data-backed path to cash-flow-positive assets rather than just chasing capital growth."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/women/6.jpg" alt="Rachel Huang" />
+              <div>
+                <div class="testimonial-name">Rachel Huang</div>
+                <div class="testimonial-role">Investment Strategist</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 3 (lg+) -->
+      <div class="testimonials-col testimonials-col--lg">
+        <div class="testimonials-track" style="animation-duration:17s">
+          <div class="testimonial-card">
+            <p class="testimonial-text">"From the moment I engaged Keyspace it felt different. No pushy sales — just clear strategy and proper execution. We're now mid-build on our second rooming house project."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/men/7.jpg" alt="David Park" />
+              <div>
+                <div class="testimonial-name">David Park</div>
+                <div class="testimonial-role">Multi-Property Investor</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"The real-time dashboard keeps me across everything — occupancy, income, and maintenance across two rooming houses. Managing a high-yield portfolio has never felt this straightforward."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/women/8.jpg" alt="Amara Nwosu" />
+              <div>
+                <div class="testimonial-name">Amara Nwosu</div>
+                <div class="testimonial-role">SMSF Investor</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"Three years, two rooming house projects, consistent gross yields above 12%. Keyspace delivers what they say they're going to deliver. That's rare in this industry."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/men/9.jpg" alt="Tom Benson" />
+              <div>
+                <div class="testimonial-name">Tom Benson</div>
+                <div class="testimonial-role">Long-Term Investor</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"From the moment I engaged Keyspace it felt different. No pushy sales — just clear strategy and proper execution. We're now mid-build on our second rooming house project."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/men/7.jpg" alt="David Park" />
+              <div>
+                <div class="testimonial-name">David Park</div>
+                <div class="testimonial-role">Multi-Property Investor</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"The real-time dashboard keeps me across everything — occupancy, income, and maintenance across two rooming houses. Managing a high-yield portfolio has never felt this straightforward."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/women/8.jpg" alt="Amara Nwosu" />
+              <div>
+                <div class="testimonial-name">Amara Nwosu</div>
+                <div class="testimonial-role">SMSF Investor</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">"Three years, two rooming house projects, consistent gross yields above 12%. Keyspace delivers what they say they're going to deliver. That's rare in this industry."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/men/9.jpg" alt="Tom Benson" />
+              <div>
+                <div class="testimonial-name">Tom Benson</div>
+                <div class="testimonial-role">Long-Term Investor</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq-section" id="faq">
+  <div class="faq-inner">
+
+    <div class="faq-header reveal">
+      <div class="section-eyebrow">Common Questions</div>
+      <h2>Questions investors ask us</h2>
+      <p>Straight answers to the most common questions before a strategy session.</p>
+    </div>
+
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <button class="faq-q">
+          What is a rooming house and why is the yield so much higher?
+          <span class="faq-icon"><svg viewBox="0 0 10 10"><path d="M5 1v8M1 5h8" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">A rooming house is a residential property with multiple private bedrooms, each leased to individual tenants with a shared common area. Because you're collecting rent from 5–8 tenants instead of one household, total weekly income is significantly higher — typically generating gross yields of 10–14% compared to 3–5% on a standard rental.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          How much deposit do I need to get started?
+          <span class="faq-icon"><svg viewBox="0 0 10 10"><path d="M5 1v8M1 5h8" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">This depends on your current borrowing capacity, existing equity, and the specific project. We structure each investment individually — some clients use equity from existing properties, others use cash deposits. We'll assess your full financial position during the strategy session before recommending anything.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          How long does the full process take — land to tenanted property?
+          <span class="faq-icon"><svg viewBox="0 0 10 10"><path d="M5 1v8M1 5h8" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Typically 12–18 months from land settlement to first tenant income. This covers council approvals, construction, and tenancy setup. The timeline varies by location and project complexity. We'll give you a project-specific schedule during the planning phase.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Do you manage the finance, or do I need my own broker?
+          <span class="faq-icon"><svg viewBox="0 0 10 10"><path d="M5 1v8M1 5h8" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">We have a trusted network of brokers experienced with development and rooming house finance structures. We can introduce you to the right specialist, or work alongside your existing broker if you have one. What matters is that the lending is structured correctly for the project — we'll make sure it is.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Can I invest through my SMSF?
+          <span class="faq-icon"><svg viewBox="0 0 10 10"><path d="M5 1v8M1 5h8" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes — SMSF investment is a strategy several of our clients use. There are specific borrowing rules that apply (LRBA structures), and not every project is suited to SMSF. We work with SMSF-specialist advisers and can discuss whether this structure makes sense for your situation.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          What makes Keyspace different from a buyers agent or property manager?
+          <span class="faq-icon"><svg viewBox="0 0 10 10"><path d="M5 1v8M1 5h8" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">A buyers agent finds you a property. A property manager looks after it after you buy. Keyspace does both — and everything in between. We source the land, assist with finance, manage the build, and operate the asset. You're not co-ordinating five different parties; you have one strategic partner handling the entire lifecycle.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          What Australian markets do you operate in?
+          <span class="faq-icon"><svg viewBox="0 0 10 10"><path d="M5 1v8M1 5h8" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">We primarily focus on high-growth corridors in Victoria and Queensland — markets where rooming house demand is strong, council approval pathways are established, and rental vacancy is low. We assess each location based on yield potential, infrastructure pipeline, and population growth data.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          What happens after construction is complete?
+          <span class="faq-icon"><svg viewBox="0 0 10 10"><path d="M5 1v8M1 5h8" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Our property management team takes over immediately — handling tenant sourcing, background checks, leasing, and ongoing maintenance. You'll have access to a real-time dashboard showing occupancy, income, and expenses across your portfolio. From there, we manage the asset while you focus on your next move.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA STRIP ── -->
+<section class="cta-strip">
+  <div class="cta-strip-inner reveal">
+    <div class="cta-strip-eyebrow">Free Strategy Session</div>
+    <h2>Stop leaving yield<br /><em>on the table.</em></h2>
+    <p>Book a free, no-obligation strategy session with the Keyspace team. We'll review your current position, explain what's possible, and map out a clear path to a high-cash-flow property asset.</p>
+    <div class="cta-strip-actions">
+      <a href="#" class="btn-orange" data-book>Book a Free Strategy Session</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ── -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="brand_assets/Uppercase Keyspace Property Logo, Spacious Design.png" alt="Keyspace Property Group" style="height:28px;width:auto;filter:invert(1);" />
+        </div>
+        <p>End-to-end property investment for cash-flow-focused investors. From land sourcing to long-term management — we guide you through every stage.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Our Process</h5>
+        <ul>
+          <li><a href="#">Land Sourcing</a></li>
+          <li><a href="#">Finance Structuring</a></li>
+          <li><a href="#">Development &amp; Build</a></li>
+          <li><a href="#">Property Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Investor Results</a></li>
+          <li><a href="#">How It Works</a></li>
+          <li><a href="#">Resources</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Get Started</h5>
+        <ul>
+          <li><a href="#" data-book>Book a Strategy Session</a></li>
+          <li><a href="#">info@keyspaceproperty.com.au</a></li>
+          <li><a href="#">Australia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Keyspace Property Group Pty Ltd. All rights reserved.</p>
+      <p>Privacy Policy · Terms of Service</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ── BOOKING MODAL ── -->
+<div id="bookingModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="modalTitle">Book a Strategy Session</h3>
+      <button id="modalClose" class="modal-close" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body" style="padding:0;">
+      <iframe src="https://app.keyspaceproperty.com.au/widget/survey/LZEnBCYRcCZqHDkO7nKN" style="border:none;width:100%;min-height:520px;display:block;" scrolling="no" id="LZEnBCYRcCZqHDkO7nKN" title="survey"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ── INFINITE GRID ── */
+  (function () {
+    const patBase   = document.getElementById('grid-pat-base');
+    const patReveal = document.getElementById('grid-pat-reveal');
+    const revealEl  = document.getElementById('hero-grid-reveal');
+    const heroEl    = document.querySelector('.hero');
+
+    let ox = 0, oy = 0;
+    const speed = 0.25;
+
+    function tick() {
+      ox = (ox + speed) % 40;
+      oy = (oy + speed) % 40;
+      if (patBase)   { patBase.setAttribute('x', ox);   patBase.setAttribute('y', oy); }
+      if (patReveal) { patReveal.setAttribute('x', ox); patReveal.setAttribute('y', oy); }
+      requestAnimationFrame(tick);
+    }
+    tick();
+
+    /* Mouse-tracking reveal mask */
+    if (heroEl && revealEl) {
+      heroEl.addEventListener('mousemove', (e) => {
+        const r = heroEl.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+        const mask = `radial-gradient(300px circle at ${x}px ${y}px, black, transparent)`;
+        revealEl.style.webkitMaskImage = mask;
+        revealEl.style.maskImage = mask;
+      });
+      /* Hide reveal when mouse leaves the hero */
+      heroEl.addEventListener('mouseleave', () => {
+        revealEl.style.webkitMaskImage = 'none';
+        revealEl.style.maskImage = 'none';
+      });
+    }
+  })();
+
+  /* ── HERO PARALLAX ── */
+  (function() {
+    const img = document.getElementById('heroBuildingImg');
+    const hero = document.querySelector('.hero');
+    if (!img || !hero) return;
+    let ticking = false;
+    function update() {
+      const scrollY = window.scrollY;
+      const heroH = hero.offsetHeight;
+      if (scrollY <= heroH + 200) {
+        const drift = scrollY * 0.18;
+        img.style.transform = `translateY(${drift}px) scale(1.08)`;
+      }
+      ticking = false;
+    }
+    // Init slight scale so parallax has room to move
+    img.style.transform = 'translateY(0px) scale(1.08)';
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+  })();
+
+  /* ── HERO CANVAS ARROW ── */
+  (function() {
+    const canvas = document.getElementById('heroCanvas');
+    const ctaBtn = document.getElementById('heroCtaBtn');
+    const heroSection = document.querySelector('.hero');
+    if (!canvas || !ctaBtn || !heroSection) return;
+    // Skip on touch-only devices
+    if (window.matchMedia('(hover: none)').matches) return;
+
+    const ctx = canvas.getContext('2d');
+    let mouseX = null, mouseY = null;
+    let heroVisible = true;
+
+    // Only draw while the hero section is in view
+    const heroObserver = new IntersectionObserver((entries) => {
+      heroVisible = entries[0].isIntersecting;
+      if (!heroVisible) ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }, { threshold: 0.05 });
+    heroObserver.observe(heroSection);
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+    window.addEventListener('mouseleave', () => { mouseX = null; mouseY = null; });
+    resize();
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (heroVisible && mouseX !== null && mouseY !== null) {
+        const rect = ctaBtn.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const angle = Math.atan2(cy - mouseY, cx - mouseX);
+        const x1 = cx - Math.cos(angle) * (rect.width / 2 + 10);
+        const y1 = cy - Math.sin(angle) * (rect.height / 2 + 10);
+        const dist = Math.hypot(x1 - mouseX, y1 - mouseY);
+        const opacity = Math.min(0.7, (dist - Math.max(rect.width, rect.height) / 2) / 350);
+
+        if (opacity > 0) {
+          const midX = (mouseX + x1) / 2;
+          const midY = (mouseY + y1) / 2;
+          const offset = Math.min(180, dist * 0.4);
+          const t = Math.max(-1, Math.min(1, (mouseY - y1) / 200));
+          const cpX = midX;
+          const cpY = midY + offset * t;
+
+          ctx.save();
+          ctx.strokeStyle = `rgba(26,26,26,${opacity})`;
+          ctx.lineWidth = 1.5;
+          ctx.setLineDash([8, 5]);
+          ctx.beginPath();
+          ctx.moveTo(mouseX, mouseY);
+          ctx.quadraticCurveTo(cpX, cpY, x1, y1);
+          ctx.stroke();
+          ctx.restore();
+
+          // Arrowhead
+          const headAngle = Math.atan2(y1 - cpY, x1 - cpX);
+          ctx.save();
+          ctx.strokeStyle = `rgba(26,26,26,${opacity})`;
+          ctx.lineWidth = 1.5;
+          ctx.setLineDash([]);
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x1 - 10 * Math.cos(headAngle - Math.PI / 6), y1 - 10 * Math.sin(headAngle - Math.PI / 6));
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x1 - 10 * Math.cos(headAngle + Math.PI / 6), y1 - 10 * Math.sin(headAngle + Math.PI / 6));
+          ctx.stroke();
+          ctx.restore();
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  /* ── FAQ ACCORDION ── */
+  document.querySelectorAll('.faq-q').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      // Open clicked if it was closed
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  /* ── SCROLL REVEAL ── */
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+  );
+
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+  /* ── BOOKING MODAL ── */
+  (function() {
+    const overlay = document.getElementById('bookingModal');
+    const closeBtn = document.getElementById('modalClose');
+
+    function openModal() {
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Wire every "Book a Session / Strategy Session" button
+    document.querySelectorAll('[data-book]').forEach((el) => {
+      el.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+    });
+
+    // Close on X button or clicking outside the box
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeModal();
+    });
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  })();
+</script>
+
+<script src="https://app.keyspaceproperty.com.au/js/form_embed.js"></script>
+</body>
+</html>
