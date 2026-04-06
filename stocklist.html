@@ -600,6 +600,23 @@
       background: var(--bg-light);
       margin-top: 24px;
     }
+    .detail-sticky-footer {
+      position: sticky;
+      bottom: 0;
+      background: #fff;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 10;
+      flex-shrink: 0;
+    }
+    .detail-sticky-footer-label {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted);
+    }
     .detail-download-btn {
       display: inline-flex;
       align-items: center;
@@ -609,17 +626,14 @@
       font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      background: #fff;
-      color: var(--primary);
-      border: 1px solid rgba(255,255,255,0.25);
-      padding: 9px 18px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
       cursor: pointer;
-      transition: background 0.18s ease, color 0.18s ease;
-      position: absolute;
-      bottom: 36px;
-      right: 40px;
+      transition: opacity 0.18s ease;
     }
-    .detail-download-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .detail-download-btn:hover { opacity: 0.75; }
 
     /* ── PRINT (feasibility PDF) ── */
     @media print {
@@ -926,10 +940,6 @@
   <div class="detail-panel">
     <button class="detail-close" onclick="closeDetail()">×</button>
 
-    <button class="detail-download-btn" onclick="printFeasibility('sparks')">
-      ↓ Download PDF
-    </button>
-
     <div class="detail-panel-hero">
       <div class="detail-eyebrow">Under Offer · 9-Bedroom Rooming House · Geelong, VIC</div>
       <div class="detail-title">120 Sparks Road<br />Norlane VIC 3214</div>
@@ -1053,6 +1063,12 @@
       </div>
 
     </div>
+
+    <div class="detail-sticky-footer">
+      <span class="detail-sticky-footer-label">120 Sparks Road, Norlane VIC 3214</span>
+      <button class="detail-download-btn" onclick="printFeasibility('sparks')">↓ Download PDF</button>
+    </div>
+
   </div>
 </div>
 
