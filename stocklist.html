@@ -917,6 +917,46 @@
       </div>
     </div>
 
+    <!-- 61 BELLBIRD AVENUE, NORLANE -->
+    <div class="stock-card" data-status="available" data-type="9bed" onclick="openDetail('bellbird')" style="cursor:pointer;">
+      <div class="stock-card-img-wrap">
+        <span class="status-badge status-available">Available</span>
+        <img src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="Keyspace Rooming House" />
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-card-location">61 Bellbird Avenue · Norlane VIC 3214</div>
+        <div class="stock-card-title">9-Bed Rooming House<br />Norlane</div>
+        <div class="stock-card-metrics">
+          <div class="metric">
+            <div class="metric-num">13.8%</div>
+            <div class="metric-label">Gross Yield</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">$3,150</div>
+            <div class="metric-label">Weekly Income</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">$58.8k</div>
+            <div class="metric-label">Annual Cashflow</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(0,0,0,0.07);border-top:none;margin-bottom:18px;">
+          <div style="padding:10px 14px;border-right:1px solid rgba(0,0,0,0.07);">
+            <div style="font-size:11px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-bottom:2px;">Completed Value</div>
+            <div style="font-size:14px;font-weight:600;color:#1a1a1a;">$1,900,000</div>
+          </div>
+          <div style="padding:10px 14px;">
+            <div style="font-size:11px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-bottom:2px;">Equity Created</div>
+            <div style="font-size:14px;font-weight:600;color:#1a1a1a;">~$953,000</div>
+          </div>
+        </div>
+        <div class="stock-card-footer">
+          <div class="stock-card-price">~$1.18M <span>total investment</span></div>
+          <a href="#" class="card-cta" onclick="event.stopPropagation();">View Details <span class="card-cta-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
     <!-- COMING SOON SLOTS -->
     <div class="coming-soon-card" data-status="coming" data-type="coming">
       <div class="coming-soon-label">Coming Soon</div>
@@ -933,6 +973,138 @@
 
   </div>
 </main>
+
+<!-- ── DETAIL MODAL: 61 BELLBIRD AVE ── -->
+<div class="detail-overlay" id="detail-bellbird">
+  <div class="detail-backdrop" onclick="closeDetail()"></div>
+  <div class="detail-panel">
+    <button class="detail-close" onclick="closeDetail()">×</button>
+
+    <div class="detail-panel-hero">
+      <div class="detail-eyebrow">Available · 9-Bedroom Rooming House · Geelong, VIC</div>
+      <div class="detail-title">61 Bellbird Avenue<br />Norlane VIC 3214</div>
+      <div class="detail-hero-stats">
+        <div class="detail-hero-stat">
+          <div class="detail-hero-stat-num">13.8%</div>
+          <div class="detail-hero-stat-label">Gross Yield</div>
+        </div>
+        <div class="detail-hero-stat">
+          <div class="detail-hero-stat-num">$3,150</div>
+          <div class="detail-hero-stat-label">Weekly Income</div>
+        </div>
+        <div class="detail-hero-stat">
+          <div class="detail-hero-stat-num">$58,788</div>
+          <div class="detail-hero-stat-label">Annual Cashflow</div>
+        </div>
+        <div class="detail-hero-stat">
+          <div class="detail-hero-stat-num">~$953k</div>
+          <div class="detail-hero-stat-label">Equity Created</div>
+        </div>
+      </div>
+    </div>
+
+    <img class="detail-img" src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="61 Bellbird Avenue Norlane" />
+
+    <div class="detail-body">
+
+      <div class="detail-section">
+        <div class="detail-section-title">Section 1 — Project Details</div>
+        <table class="detail-table">
+          <tr><td>Property Address</td><td>61 Bellbird Avenue, Norlane VIC 3214</td></tr>
+          <tr><td>Property Type</td><td>9-Bedroom Rooming House</td></tr>
+          <tr><td>Weekly Rent Per Room</td><td>$350</td></tr>
+          <tr><td>Number of Rooms</td><td>9</td></tr>
+          <tr><td>Weekly Gross Income</td><td>$3,150</td></tr>
+        </table>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">Section 2 — Project Costs</div>
+        <table class="detail-table">
+          <tr><td colspan="2" style="padding-top:14px;padding-bottom:6px;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#bbb;">A. Land Costs</td></tr>
+          <tr><td>Land Purchase Price</td><td>$350,000</td></tr>
+          <tr><td>Stamp Duty</td><td>$16,070</td></tr>
+          <tr><td>Valuation Fees</td><td>$5,000</td></tr>
+          <tr><td>Conveyancing Fees</td><td>$3,000</td></tr>
+          <tr class="total-row"><td>Total Acquisition Costs</td><td>$374,070</td></tr>
+          <tr><td colspan="2" style="padding-top:14px;padding-bottom:6px;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#bbb;">B. Construction Costs</td></tr>
+          <tr><td>Base Build Contract</td><td>$780,000</td></tr>
+          <tr><td>Furniture Package</td><td>$30,000</td></tr>
+          <tr><td>Landscaping</td><td>Included</td></tr>
+          <tr><td>Utility Connections</td><td>Included</td></tr>
+          <tr class="total-row"><td>Total Construction Costs</td><td>$810,000</td></tr>
+          <tr><td colspan="2" style="padding-top:14px;padding-bottom:6px;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#bbb;">C. Total Project</td></tr>
+          <tr class="total-row"><td>Total Project Investment</td><td>~$1,184,070</td></tr>
+          <tr class="total-row"><td>Total Deposit Required</td><td>$260,110</td></tr>
+        </table>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">Section 3 & 4 — Income & Expenses</div>
+        <table class="detail-table">
+          <tr><td colspan="2" style="padding-top:14px;padding-bottom:6px;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#bbb;">Income</td></tr>
+          <tr><td>Annual Gross Rent</td><td>$163,800</td></tr>
+          <tr><td colspan="2" style="padding-top:14px;padding-bottom:6px;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#bbb;">Operating Expenses</td></tr>
+          <tr><td>Property Management (10%)</td><td>$16,380</td></tr>
+          <tr><td>Council Rates</td><td>$2,500</td></tr>
+          <tr><td>Power</td><td>$4,000</td></tr>
+          <tr><td>Water Rates</td><td>$1,000</td></tr>
+          <tr><td>Internet</td><td>$1,440</td></tr>
+          <tr><td>Insurance</td><td>$5,000</td></tr>
+          <tr><td>Waste Management</td><td>$1,700</td></tr>
+          <tr><td>Maintenance Allowance</td><td>$2,000</td></tr>
+          <tr class="total-row"><td>Total Operating Expenses</td><td>$34,020</td></tr>
+        </table>
+      </div>
+
+      <div class="detail-highlight-strip">
+        <div class="detail-highlight-strip-item">
+          <div class="detail-highlight-strip-num">$163,800</div>
+          <div class="detail-highlight-strip-label">Annual Gross Rent</div>
+        </div>
+        <div class="detail-highlight-strip-item">
+          <div class="detail-highlight-strip-num">$129,780</div>
+          <div class="detail-highlight-strip-label">Net Operating Income</div>
+        </div>
+        <div class="detail-highlight-strip-item">
+          <div class="detail-highlight-strip-num">$58,788</div>
+          <div class="detail-highlight-strip-label">Cashflow After Mortgage</div>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">Section 6 — Loan Assessment</div>
+        <table class="detail-table">
+          <tr><td>Total Loan Amount</td><td>$946,560</td></tr>
+          <tr><td>Interest Rate</td><td>7.5% p.a.</td></tr>
+          <tr><td>Monthly Repayment</td><td>$5,916</td></tr>
+          <tr><td>Annual Repayments</td><td>$70,992</td></tr>
+          <tr class="total-row"><td>Annual Cashflow (After Mortgage)</td><td>$58,788</td></tr>
+        </table>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">Section 7 — Equity Position</div>
+        <table class="detail-table">
+          <tr><td>Valuation on Completion</td><td>$1,900,000</td></tr>
+          <tr><td>Total Loan Amount</td><td>$946,560</td></tr>
+          <tr class="total-row"><td>Property Equity on Completion</td><td>$953,440</td></tr>
+        </table>
+      </div>
+
+      <div class="detail-note">
+        All figures are indicative only and based on the assumptions provided. This document is for informational purposes only and does not constitute financial advice. Please seek independent financial, legal, and tax advice before making any investment decision.
+      </div>
+
+    </div>
+
+    <div class="detail-sticky-footer">
+      <span class="detail-sticky-footer-label">61 Bellbird Avenue, Norlane VIC 3214</span>
+      <button class="detail-download-btn" onclick="printFeasibility('bellbird')">↓ Download PDF</button>
+    </div>
+
+  </div>
+</div>
 
 <!-- ── DETAIL MODAL: 120 SPARKS RD ── -->
 <div class="detail-overlay" id="detail-sparks">
@@ -1144,6 +1316,16 @@
         { num: '$55,116', label: 'Annual Cashflow' },
         { num: '~$904k', label: 'Equity Created' },
       ]
+    },
+    bellbird: {
+      eyebrow: 'Available · 9-Bedroom Rooming House · Geelong, VIC',
+      title: '61 Bellbird Avenue\nNorlane VIC 3214',
+      stats: [
+        { num: '13.8%', label: 'Gross Yield' },
+        { num: '$3,150', label: 'Weekly Income' },
+        { num: '$58,788', label: 'Annual Cashflow' },
+        { num: '~$953k', label: 'Equity Created' },
+      ]
     }
   };
 
@@ -1152,54 +1334,83 @@
     if (!d) return;
 
     const printWin = window.open('', '_blank');
-    printWin.document.write(`<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8"/>
-<title>Feasibility — ${d.title.replace('\n',' ')}</title>
-<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet"/>
-<style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Urbanist',sans-serif;font-size:12px;color:#555;background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;}
-.page{width:210mm;min-height:297mm;padding:0;margin:0 auto;}
-.print-header{background:#1a1a1a;padding:32px 36px 28px;}
-.print-eyebrow{font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px;}
-.print-title{font-family:'Fraunces',Georgia,serif;font-size:30px;font-weight:900;color:#fff;line-height:1.1;letter-spacing:-0.02em;margin-bottom:22px;white-space:pre-line;}
-.print-stats-row{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,0.12);padding-top:16px;}
-.print-stat{padding-right:16px;border-right:1px solid rgba(255,255,255,0.1);margin-right:16px;}
-.print-stat:last-child{border-right:none;margin-right:0;padding-right:0;}
-.print-stat-num{font-family:'Fraunces',Georgia,serif;font-size:22px;font-weight:900;color:#fff;line-height:1;margin-bottom:3px;}
-.print-stat-label{font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);}
-.body{padding:28px 36px 36px;}
-.section{margin-bottom:20px;page-break-inside:avoid;}
-.section-title{font-size:8px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#bbb;padding-bottom:6px;border-bottom:1px solid #eee;margin-bottom:0;}
-.sub-title{font-size:8px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#ccc;padding:10px 0 4px;}
-table{width:100%;border-collapse:collapse;}
-td{padding:7px 0;border-bottom:1px solid #f5f5f5;font-size:11px;color:#555;}
-td:last-child{text-align:right;font-weight:500;color:#1a1a1a;}
-.total td{font-weight:700;font-size:12px;color:#1a1a1a;border-top:2px solid #1a1a1a;border-bottom:none;padding-top:10px;}
-.strip{display:grid;grid-template-columns:repeat(3,1fr);background:#1a1a1a;margin:16px 0;page-break-inside:avoid;}
-.strip-item{padding:16px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.08);}
-.strip-item:last-child{border-right:none;}
-.strip-num{font-family:'Fraunces',Georgia,serif;font-size:20px;font-weight:900;color:#fff;margin-bottom:3px;}
-.strip-label{font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);}
-.disclaimer{font-size:9px;color:#bbb;line-height:1.5;border-top:1px solid #eee;padding-top:12px;margin-top:20px;font-style:italic;}
-.footer-bar{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #eee;padding-top:12px;margin-top:12px;}
-.footer-bar img{height:18px;}
-.footer-bar span{font-size:9px;color:#bbb;}
-@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}.no-print{display:none!important;}}
-</style>
-</head>
-<body>
-<div class="page">
-  <div class="print-header">
-    <div class="print-eyebrow">${d.eyebrow}</div>
-    <div class="print-title">${d.title}</div>
-    <div class="print-stats-row">
-      ${d.stats.map(s => `<div class="print-stat"><div class="print-stat-num">${s.num}</div><div class="print-stat-label">${s.label}</div></div>`).join('')}
+    const bellbirdHTML = `
+    <div class="section">
+      <div class="section-title">Section 1 — Project Details</div>
+      <table>
+        <tr><td>Property Address</td><td>61 Bellbird Avenue, Norlane VIC 3214</td></tr>
+        <tr><td>Property Type</td><td>9-Bedroom Rooming House</td></tr>
+        <tr><td>Weekly Rent Per Room</td><td>$350</td></tr>
+        <tr><td>Number of Rooms</td><td>9</td></tr>
+        <tr><td>Weekly Gross Income</td><td>$3,150</td></tr>
+      </table>
     </div>
-  </div>
-  <div class="body">
+    <div class="section">
+      <div class="section-title">Section 2 — Project Costs</div>
+      <div class="sub-title">A. Land Costs</div>
+      <table>
+        <tr><td>Land Purchase Price</td><td>$350,000</td></tr>
+        <tr><td>Stamp Duty</td><td>$16,070</td></tr>
+        <tr><td>Valuation Fees</td><td>$5,000</td></tr>
+        <tr><td>Conveyancing Fees</td><td>$3,000</td></tr>
+        <tr class="total"><td>Total Acquisition Costs</td><td>$374,070</td></tr>
+      </table>
+      <div class="sub-title">B. Construction Costs</div>
+      <table>
+        <tr><td>Base Build Contract</td><td>$780,000</td></tr>
+        <tr><td>Furniture Package</td><td>$30,000</td></tr>
+        <tr><td>Landscaping</td><td>Included</td></tr>
+        <tr><td>Utility Connections</td><td>Included</td></tr>
+        <tr class="total"><td>Total Construction Costs</td><td>$810,000</td></tr>
+      </table>
+      <div class="sub-title">C. Total Project</div>
+      <table>
+        <tr class="total"><td>Total Project Investment</td><td>~$1,184,070</td></tr>
+        <tr class="total"><td>Total Deposit Required</td><td>$260,110</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-title">Section 3 & 4 — Income & Expenses</div>
+      <div class="sub-title">Income</div>
+      <table><tr><td>Annual Gross Rent</td><td>$163,800</td></tr></table>
+      <div class="sub-title">Operating Expenses</div>
+      <table>
+        <tr><td>Property Management (10%)</td><td>$16,380</td></tr>
+        <tr><td>Council Rates</td><td>$2,500</td></tr>
+        <tr><td>Power</td><td>$4,000</td></tr>
+        <tr><td>Water Rates</td><td>$1,000</td></tr>
+        <tr><td>Internet</td><td>$1,440</td></tr>
+        <tr><td>Insurance</td><td>$5,000</td></tr>
+        <tr><td>Waste Management</td><td>$1,700</td></tr>
+        <tr><td>Maintenance Allowance</td><td>$2,000</td></tr>
+        <tr class="total"><td>Total Operating Expenses</td><td>$34,020</td></tr>
+      </table>
+    </div>
+    <div class="strip">
+      <div class="strip-item"><div class="strip-num">$163,800</div><div class="strip-label">Annual Gross Rent</div></div>
+      <div class="strip-item"><div class="strip-num">$129,780</div><div class="strip-label">Net Operating Income</div></div>
+      <div class="strip-item"><div class="strip-num">$58,788</div><div class="strip-label">Cashflow After Mortgage</div></div>
+    </div>
+    <div class="section">
+      <div class="section-title">Section 6 — Loan Assessment</div>
+      <table>
+        <tr><td>Total Loan Amount</td><td>$946,560</td></tr>
+        <tr><td>Interest Rate</td><td>7.5% p.a.</td></tr>
+        <tr><td>Monthly Repayment</td><td>$5,916</td></tr>
+        <tr><td>Annual Repayments</td><td>$70,992</td></tr>
+        <tr class="total"><td>Annual Cashflow (After Mortgage)</td><td>$58,788</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-title">Section 7 — Equity Position</div>
+      <table>
+        <tr><td>Valuation on Completion</td><td>$1,900,000</td></tr>
+        <tr><td>Total Loan Amount</td><td>$946,560</td></tr>
+        <tr class="total"><td>Property Equity on Completion</td><td>$953,440</td></tr>
+      </table>
+    </div>`;
+
+    const sparksHTML = `
     <div class="section">
       <div class="section-title">Section 1 — Project Details</div>
       <table>
@@ -1273,7 +1484,59 @@ td:last-child{text-align:right;font-weight:500;color:#1a1a1a;}
         <tr><td>Total Loan Amount</td><td>$995,520</td></tr>
         <tr class="total"><td>Property Equity on Completion</td><td>$904,480</td></tr>
       </table>
+    </div>`;
+
+    const bodyContent = id === 'bellbird' ? bellbirdHTML : sparksHTML;
+
+    printWin.document.write(`<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Feasibility — ${d.title.replace('\n',' ')}</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Urbanist',sans-serif;font-size:12px;color:#555;background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;}
+.page{width:210mm;min-height:297mm;padding:0;margin:0 auto;}
+.print-header{background:#1a1a1a;padding:32px 36px 28px;}
+.print-eyebrow{font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px;}
+.print-title{font-family:'Fraunces',Georgia,serif;font-size:30px;font-weight:900;color:#fff;line-height:1.1;letter-spacing:-0.02em;margin-bottom:22px;white-space:pre-line;}
+.print-stats-row{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,0.12);padding-top:16px;}
+.print-stat{padding-right:16px;border-right:1px solid rgba(255,255,255,0.1);margin-right:16px;}
+.print-stat:last-child{border-right:none;margin-right:0;padding-right:0;}
+.print-stat-num{font-family:'Fraunces',Georgia,serif;font-size:22px;font-weight:900;color:#fff;line-height:1;margin-bottom:3px;}
+.print-stat-label{font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);}
+.body{padding:28px 36px 36px;}
+.section{margin-bottom:20px;page-break-inside:avoid;}
+.section-title{font-size:8px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#bbb;padding-bottom:6px;border-bottom:1px solid #eee;margin-bottom:0;}
+.sub-title{font-size:8px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#ccc;padding:10px 0 4px;}
+table{width:100%;border-collapse:collapse;}
+td{padding:7px 0;border-bottom:1px solid #f5f5f5;font-size:11px;color:#555;}
+td:last-child{text-align:right;font-weight:500;color:#1a1a1a;}
+.total td{font-weight:700;font-size:12px;color:#1a1a1a;border-top:2px solid #1a1a1a;border-bottom:none;padding-top:10px;}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);background:#1a1a1a;margin:16px 0;page-break-inside:avoid;}
+.strip-item{padding:16px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.08);}
+.strip-item:last-child{border-right:none;}
+.strip-num{font-family:'Fraunces',Georgia,serif;font-size:20px;font-weight:900;color:#fff;margin-bottom:3px;}
+.strip-label{font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);}
+.disclaimer{font-size:9px;color:#bbb;line-height:1.5;border-top:1px solid #eee;padding-top:12px;margin-top:20px;font-style:italic;}
+.footer-bar{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #eee;padding-top:12px;margin-top:12px;}
+.footer-bar img{height:18px;}
+.footer-bar span{font-size:9px;color:#bbb;}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}.no-print{display:none!important;}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="print-header">
+    <div class="print-eyebrow">${d.eyebrow}</div>
+    <div class="print-title">${d.title}</div>
+    <div class="print-stats-row">
+      ${d.stats.map(s => `<div class="print-stat"><div class="print-stat-num">${s.num}</div><div class="print-stat-label">${s.label}</div></div>`).join('')}
     </div>
+  </div>
+  <div class="body">
+    ${bodyContent}
     <div class="disclaimer">All figures are indicative only and based on the assumptions provided. This document is for informational purposes only and does not constitute financial advice. Please seek independent financial, legal, and tax advice before making any investment decision.</div>
     <div class="footer-bar">
       <img src="https://dylan499.github.io/Keyspace-Website/brand_assets/Uppercase Keyspace Property Logo, Spacious Design.png" alt="Keyspace Property Group" />
