@@ -254,16 +254,59 @@
       position: relative;
       overflow: hidden;
     }
-    .stock-card-img-wrap img {
+    .img-track {
+      display: flex;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .img-track img {
       width: 100%;
+      flex-shrink: 0;
       height: 220px;
       object-fit: cover;
       display: block;
-      transition: transform 0.4s ease;
     }
-    .stock-card:hover .stock-card-img-wrap img {
-      transform: scale(1.03);
+    .img-slide-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: rgba(255,255,255,0.88);
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 17px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s, background 0.15s;
+      color: #1a1a1a;
+      padding: 0;
     }
+    .stock-card:hover .img-slide-btn { opacity: 1; }
+    .img-slide-btn:hover { background: rgba(255,255,255,1); }
+    .img-slide-btn.prev { left: 8px; }
+    .img-slide-btn.next { right: 8px; }
+    .img-dots {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 5px;
+      z-index: 10;
+    }
+    .img-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.45);
+      transition: background 0.2s;
+    }
+    .img-dot.active { background: #fff; }
     .stock-card-img-wrap::after {
       content: '';
       position: absolute;
@@ -839,7 +882,13 @@
     <div class="stock-card" data-status="sold" data-type="9bed" onclick="openDetail('bellbird')" style="cursor:pointer;">
       <div class="stock-card-img-wrap">
         <span class="status-badge status-sold">Sold</span>
-        <img src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="Keyspace Rooming House" />
+        <div class="img-track" data-slide="0">
+          <img src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="Exterior" />
+          <img src="brand_assets/06-6-copy.jpg" alt="Interior" />
+        </div>
+        <button class="img-slide-btn prev" onclick="event.stopPropagation();slideCard(this,-1)">&#8249;</button>
+        <button class="img-slide-btn next" onclick="event.stopPropagation();slideCard(this,1)">&#8250;</button>
+        <div class="img-dots"><div class="img-dot active"></div><div class="img-dot"></div></div>
       </div>
       <div class="stock-card-body">
         <div class="stock-card-location">61 Bellbird Avenue · Norlane VIC 3214</div>
@@ -880,7 +929,13 @@
     <div class="stock-card" data-status="sold" data-type="9bed" onclick="openDetail('sparks')" style="cursor:pointer;">
       <div class="stock-card-img-wrap">
         <span class="status-badge status-sold">Sold</span>
-        <img src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="Keyspace Rooming House" />
+        <div class="img-track" data-slide="0">
+          <img src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="Exterior" />
+          <img src="brand_assets/06-6-copy.jpg" alt="Interior" />
+        </div>
+        <button class="img-slide-btn prev" onclick="event.stopPropagation();slideCard(this,-1)">&#8249;</button>
+        <button class="img-slide-btn next" onclick="event.stopPropagation();slideCard(this,1)">&#8250;</button>
+        <div class="img-dots"><div class="img-dot active"></div><div class="img-dot"></div></div>
       </div>
       <div class="stock-card-body">
         <div class="stock-card-location">120 Sparks Road · Norlane VIC 3214</div>
@@ -920,7 +975,13 @@
     <div class="stock-card" data-status="available" data-type="9bed" onclick="openDetail('dyer')" style="cursor:pointer;">
       <div class="stock-card-img-wrap">
         <span class="status-badge status-available">Available</span>
-        <img src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="Keyspace Rooming House" />
+        <div class="img-track" data-slide="0">
+          <img src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="Exterior" />
+          <img src="brand_assets/06-6-copy.jpg" alt="Interior" />
+        </div>
+        <button class="img-slide-btn prev" onclick="event.stopPropagation();slideCard(this,-1)">&#8249;</button>
+        <button class="img-slide-btn next" onclick="event.stopPropagation();slideCard(this,1)">&#8250;</button>
+        <div class="img-dots"><div class="img-dot active"></div><div class="img-dot"></div></div>
       </div>
       <div class="stock-card-body">
         <div class="stock-card-location">13 Dyer Street · Hoppers Crossing VIC 3029</div>
@@ -960,7 +1021,13 @@
     <div class="stock-card" data-status="available" data-type="9bed" onclick="openDetail('firstavenue')" style="cursor:pointer;">
       <div class="stock-card-img-wrap">
         <span class="status-badge status-available">Available</span>
-        <img src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="Keyspace Rooming House" />
+        <div class="img-track" data-slide="0">
+          <img src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="Exterior" />
+          <img src="brand_assets/06-6-copy.jpg" alt="Interior" />
+        </div>
+        <button class="img-slide-btn prev" onclick="event.stopPropagation();slideCard(this,-1)">&#8249;</button>
+        <button class="img-slide-btn next" onclick="event.stopPropagation();slideCard(this,1)">&#8250;</button>
+        <div class="img-dots"><div class="img-dot active"></div><div class="img-dot"></div></div>
       </div>
       <div class="stock-card-body">
         <div class="stock-card-location">17 First Avenue · Melton South VIC 3338</div>
@@ -1000,7 +1067,13 @@
     <div class="stock-card" data-status="available" data-type="9bed" onclick="openDetail('midlands')" style="cursor:pointer;">
       <div class="stock-card-img-wrap">
         <span class="status-badge status-available">Available</span>
-        <img src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="Keyspace Rooming House" />
+        <div class="img-track" data-slide="0">
+          <img src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="Exterior" />
+          <img src="brand_assets/06-6-copy.jpg" alt="Interior" />
+        </div>
+        <button class="img-slide-btn prev" onclick="event.stopPropagation();slideCard(this,-1)">&#8249;</button>
+        <button class="img-slide-btn next" onclick="event.stopPropagation();slideCard(this,1)">&#8250;</button>
+        <div class="img-dots"><div class="img-dot active"></div><div class="img-dot"></div></div>
       </div>
       <div class="stock-card-body">
         <div class="stock-card-location">41 Midlands Drive · Ballarat North VIC 3350</div>
@@ -1031,7 +1104,13 @@
     <div class="stock-card" data-status="available" data-type="9bed" onclick="openDetail('gannet')" style="cursor:pointer;">
       <div class="stock-card-img-wrap">
         <span class="status-badge status-available">Available</span>
-        <img src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="Keyspace Rooming House" />
+        <div class="img-track" data-slide="0">
+          <img src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="Exterior" />
+          <img src="brand_assets/06-6-copy.jpg" alt="Interior" />
+        </div>
+        <button class="img-slide-btn prev" onclick="event.stopPropagation();slideCard(this,-1)">&#8249;</button>
+        <button class="img-slide-btn next" onclick="event.stopPropagation();slideCard(this,1)">&#8250;</button>
+        <div class="img-dots"><div class="img-dot active"></div><div class="img-dot"></div></div>
       </div>
       <div class="stock-card-body">
         <div class="stock-card-location">3 Gannet Street · Werribee VIC 3030</div>
@@ -1062,7 +1141,13 @@
     <div class="stock-card" data-status="available" data-type="9bed" onclick="openDetail('chirnside')" style="cursor:pointer;">
       <div class="stock-card-img-wrap">
         <span class="status-badge status-available">Available</span>
-        <img src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="Keyspace Rooming House" />
+        <div class="img-track" data-slide="0">
+          <img src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="Exterior" />
+          <img src="brand_assets/06-6-copy.jpg" alt="Interior" />
+        </div>
+        <button class="img-slide-btn prev" onclick="event.stopPropagation();slideCard(this,-1)">&#8249;</button>
+        <button class="img-slide-btn next" onclick="event.stopPropagation();slideCard(this,1)">&#8250;</button>
+        <div class="img-dots"><div class="img-dot active"></div><div class="img-dot"></div></div>
       </div>
       <div class="stock-card-body">
         <div class="stock-card-location">23 Chirnside Crescent · Laverton VIC 3028</div>
@@ -1093,7 +1178,13 @@
     <div class="stock-card" data-status="available" data-type="9bed" onclick="openDetail('welwyn')" style="cursor:pointer;">
       <div class="stock-card-img-wrap">
         <span class="status-badge status-available">Available</span>
-        <img src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="Keyspace Rooming House" />
+        <div class="img-track" data-slide="0">
+          <img src="brand_assets/B23606-ROOMING-HOUSE-RANGE-Exteriors-5-Bed-Rooming1-scaled.jpg" alt="Exterior" />
+          <img src="brand_assets/06-6-copy.jpg" alt="Interior" />
+        </div>
+        <button class="img-slide-btn prev" onclick="event.stopPropagation();slideCard(this,-1)">&#8249;</button>
+        <button class="img-slide-btn next" onclick="event.stopPropagation();slideCard(this,1)">&#8250;</button>
+        <div class="img-dots"><div class="img-dot active"></div><div class="img-dot"></div></div>
       </div>
       <div class="stock-card-body">
         <div class="stock-card-location">77 Welwyn Parade · Deer Park VIC 3023</div>
@@ -2023,6 +2114,18 @@
 
   // Init count
   filterCards('all', document.querySelector('.filter-btn.active'));
+
+  function slideCard(btn, dir) {
+    const wrap = btn.closest('.stock-card-img-wrap');
+    const track = wrap.querySelector('.img-track');
+    const dots = wrap.querySelectorAll('.img-dot');
+    const count = track.children.length;
+    let current = parseInt(track.dataset.slide) || 0;
+    current = (current + dir + count) % count;
+    track.dataset.slide = current;
+    track.style.transform = 'translateX(-' + (current * (100 / count)) + '%)';
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+  }
 
   function openDetail(id) {
     const el = document.getElementById('detail-' + id);
